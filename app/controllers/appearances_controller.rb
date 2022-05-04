@@ -3,7 +3,7 @@ class AppearancesController < ApplicationController
 
   def create
       appearance = Appearance.create!(appearance_params)
-      render json: appearance.to_json(include: [:episode, :guest]), status: :created
+      render json: appearance.to_json(include: [episode: {only: [:id, :date, :number]}, guest: {only: [:id, :name, :occupation]}], except: [:created_at, :updated_at, :episode_id, :guest_id,]), status: :created
 
   end
 

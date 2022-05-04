@@ -11,7 +11,8 @@ class EpisodesController < ApplicationController
   
     # GET /episodes/1
     def show
-      render json: @episode, serializer: AppearanceSerializer
+      episode = Episode.find(params[:id])
+      render json: episode, serializer: EpisodeguestSerializer
     end
   
     # POST /episodes
